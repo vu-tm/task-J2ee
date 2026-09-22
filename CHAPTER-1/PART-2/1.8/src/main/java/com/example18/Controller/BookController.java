@@ -1,6 +1,8 @@
 package com.example18.Controller;
 
 import com.example18.Entity.Book;
+import com.example18.Exception.BookIdMismatchException;
+import com.example18.Exception.BookNotFoundException;
 import com.example18.Repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,8 +30,9 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Book> findOne(@PathVariable Long id) {
-        return bookRepository.findById(id);
+    public Book findOne(@PathVariable Long id) {
+        return bookRepository.findById(id)
+                .orElseThrow(BookNotFoundException::new);
     }
 
     @PostMapping
@@ -38,16 +41,20 @@ public class BookController {
         return bookRepository.save(book);
     }
 
-    @DeleteMapping
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}") // id
     public void delete(@PathVariable Long id) {
-        bookRepository.findById(id);
+        bookRepository.findById(id)
+                .orElseThrow(BookNotFoundException::new);
         bookRepository.deleteById(id);
     }
 
-    @PutMapping
+    @PutMapping("/{id}") // id
     public Book updateBook(@RequestBody Book book, @PathVariable Long id) {
-        bookRepository.findById(id);
+        if (book.getId() != id) {
+            throw new BookIdMismatchException();
+        }
+        bookRepository.findById(id)
+                .orElseThrow(BookNotFoundException::new);
         return bookRepository.save(book);
     }
 }

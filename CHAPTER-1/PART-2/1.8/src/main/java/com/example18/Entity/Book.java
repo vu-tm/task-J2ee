@@ -1,6 +1,7 @@
 package com.example18.Entity;
 
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
 public class Book {
@@ -9,9 +10,11 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotNull
     @Column(unique = true, nullable = false)
     private String title;
 
+    @NotNull
     @Column(nullable = false)
     private String author;
 
