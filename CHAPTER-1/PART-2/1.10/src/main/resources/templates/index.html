@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Capcha ngẫu nhiên</h1>
+
+    <div class="capcha-box">
+        <img alt="Ảnh capcha"
+             class="capcha-image"
+             th:src="@{'/capcha/' + ${imgName}}">
+    </div>
+
+    <p>Ảnh hiện tại: <span th:text="${imgName}"></span></p>
+</body>
+</html>
