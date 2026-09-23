@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>feedback</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div class="survey-container">
+
+    <h1 class="survey-title"> Customer Service Experience Feedback </h1>
+
+    <form th:action="@{/submit}" method="post" id="feedbackForm">
+        <div class="question">
+            <p class="question-text">
+                1. How frequently do you use our product?
+            </p>
+
+            <div class="radio-grid">
+                <label class="radio-card"
+                       th:classappend="${frequency == 'every_day'} ? 'selected' : ''">
+                    <input type="radio"
+                           name="frequency"
+                           value="every_day"
+                           th:checked="${frequency == 'every_day'}">
+                    <span class="radio-label">Every day</span>
+                </label>
+                <label class="radio-card"
+                       th:classappend="${frequency == 'once_a_week'} ? 'selected' : ''">
+                    <input type="radio"
+                           name="frequency"
+                           value="once_a_week"
+                           th:checked="${frequency == 'once_a_week'}">
+                    <span class="radio-label">About once a week</span>
+                </label>
+                <label class="radio-card"
+                       th:classappend="${frequency == 'once_a_month'} ? 'selected' : ''">
+                    <input type="radio"
+                           name="frequency"
+                           value="once_a_month"
+                           th:checked="${frequency == 'once_a_month'}">
+                    <span class="radio-label">About once a month</span>
+                </label>
+
+                <label class="radio-card"
+                       th:classappend="${frequency == 'less_frequently'} ? 'selected' : ''">
+                    <input type="radio"
+                           name="frequency"
+                           value="less_frequently"
+                           th:checked="${frequency == 'less_frequently'}">
+                    <span class="radio-label">Less frequently</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p class="question-text">
+                2. How would you rate the ease of use of our product?
+            </p>
+            <div class="nps-labels">
+                <span>Very difficult</span>
+                <span>Very easy</span>
+            </div>
+            <div class="nps-scale">
+                <label class="nps-option"
+                       th:each="i : ${#numbers.sequence(0, 10)}">
+                    <input type="radio"
+                           name="easeOfUse"
+                           th:value="${i}"
+                           th:checked="${easeOfUse != null and easeOfUse == '' + i}">
+                    <span th:text="${i}"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p class="question-text">
+                3. How would you rate the quality of our product?
+            </p>
+            <div class="nps-labels">
+                <span>Very Unsatisfactory</span>
+                <span>Very Satisfactory</span>
+            </div>
+            <div class="nps-scale">
+                <label class="nps-option"
+                       th:each="i : ${#numbers.sequence(0, 10)}">
+                    <input type="radio"
+                           name="quality"
+                           th:value="${i}"
+                           th:checked="${quality != null and quality == '' + i}">
+                    <span th:text="${i}"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p class="question-text">
+                4. How would you rate the performance of our product?
+            </p>
+            <div class="nps-labels">
+                <span>Very Unsatisfactory</span>
+                <span>Very Satisfactory</span>
+            </div>
+            <div class="nps-scale">
+                <label class="nps-option"
+                       th:each="i : ${#numbers.sequence(0, 10)}">
+                    <input type="radio"
+                           name="performance"
+                           th:value="${i}"
+                           th:checked="${performance != null and performance == '' + i}">
+                    <span th:text="${i}"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p class="question-text">
+                5. How would you rate the value for money of our product?
+            </p>
+            <div class="nps-labels">
+                <span>Very Unsatisfactory</span>
+                <span>Very Satisfactory</span>
+            </div>
+            <div class="nps-scale">
+                <label class="nps-option"
+                       th:each="i : ${#numbers.sequence(0, 10)}">
+                    <input type="radio"
+                           name="valueForMoney"
+                           th:value="${i}"
+                           th:checked="${valueForMoney != null and valueForMoney == '' + i}">
+                    <span th:text="${i}"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p class="question-text">
+                6. If you could add or change one feature on our product, what would it be and why?
+            </p>
+            <textarea name="comment"
+                      class="comment-box"
+                      rows="4"
+                      th:text="${comment}">
+            </textarea>
+        </div>
+
+        <div class="done-wrapper">
+            <button type="submit" class="btn-done">
+                Done
+            </button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

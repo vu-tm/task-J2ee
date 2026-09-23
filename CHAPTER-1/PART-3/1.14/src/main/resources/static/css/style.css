@@ -1,0 +1,263 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    color: #2b2b2b;
+    margin: 0;
+    padding: 40px 20px;
+}
+
+.survey-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.survey-title {
+    color: #2e8b2e;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.question {
+    margin-bottom: 45px;
+}
+
+.question-text {
+    font-size: 17px;
+    color: #333;
+    margin-bottom: 14px;
+    line-height: 1.4;
+}
+
+
+/* =========================
+   NPS Scale - Câu 1
+========================= */
+
+.nps-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 6px;
+    padding: 0 2px;
+}
+
+.nps-scale {
+    display: flex;
+    border: 1px solid #2e8b2e;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.nps-option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border-right: 1px solid #2e8b2e;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    position: relative;
+    transition: background-color 0.15s ease;
+}
+
+.nps-option:last-child {
+    border-right: none;
+}
+
+.nps-option input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+}
+
+.nps-option:hover {
+    background-color: #eef7ee;
+}
+
+.nps-option:has(input:checked) {
+    background-color: #ececec;
+    box-shadow: inset 0 0 0 2px #2e8b2e;
+}
+
+.nps-option:has(input:focus-visible) {
+    outline: 2px solid #1a5fb4;
+    outline-offset: -2px;
+}
+
+
+/* =========================
+   Radio Grid - Câu 2
+========================= */
+
+.radio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+    margin-bottom: 20px;
+}
+
+.radio-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    transition:
+            background-color 0.15s ease,
+            border-color 0.15s ease;
+}
+
+/* Radio mặc định, không còn icon tick custom */
+.radio-card input {
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: #2e8b2e;
+}
+
+.radio-card:hover {
+    background-color: #f4f8f4;
+}
+
+/* Khung nét đứt khi hover hoặc focus */
+.radio-card:hover,
+.radio-card:focus-within {
+    border: 1px dashed #999;
+}
+
+/* Ô đang được chọn */
+.radio-card.selected {
+    background-color: #ececec;
+    border: 1px solid #333;
+}
+
+.radio-card.selected:hover {
+    background-color: #e2e2e2;
+    border: 1px solid #333;
+}
+
+.radio-label {
+    font-size: 16px;
+    color: #222;
+}
+
+.radio-card.selected .radio-label {
+    font-weight: 700;
+}
+
+
+/* =========================
+   Buttons
+========================= */
+
+.btn-ok,
+.btn-done {
+    background-color: #2e8b2e;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 2px;
+    cursor: pointer;
+    transition:
+            background-color 0.15s ease,
+            transform 0.05s ease;
+}
+
+.btn-ok:hover,
+.btn-done:hover {
+    background-color: #256f25;
+}
+
+.btn-ok:active,
+.btn-done:active {
+    background-color: #1e5c1e;
+    transform: translateY(1px);
+}
+
+.done-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+
+/* =========================
+   Textarea - Câu 6
+========================= */
+
+.comment-box {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid #2e8b2e;
+    border-radius: 2px;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    resize: vertical;
+}
+
+.comment-box:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(46, 139, 46, 0.35);
+}
+
+
+/* =========================
+   Banner sau khi submit
+========================= */
+
+.submitted-banner {
+    margin-top: 30px;
+    padding: 14px 18px;
+    background-color: #eaf6ea;
+    border: 1px solid #2e8b2e;
+    border-radius: 4px;
+    color: #235f23;
+    font-size: 15px;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 600px) {
+    body {
+        padding: 25px 15px;
+    }
+
+    .survey-title {
+        font-size: 23px;
+        margin-bottom: 30px;
+    }
+
+    .radio-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .nps-option {
+        height: 44px;
+        font-size: 14px;
+    }
+
+    .nps-labels {
+        font-size: 12px;
+    }
+}
