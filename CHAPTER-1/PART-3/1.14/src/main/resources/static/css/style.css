@@ -33,11 +33,6 @@ body {
     line-height: 1.4;
 }
 
-
-/* =========================
-   NPS Scale - Câu 1
-========================= */
-
 .nps-labels {
     display: flex;
     justify-content: space-between;
@@ -95,11 +90,7 @@ body {
     outline-offset: -2px;
 }
 
-
-/* =========================
-   Radio Grid - Câu 2
-========================= */
-
+/* radio button */
 .radio-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -120,7 +111,6 @@ body {
             border-color 0.15s ease;
 }
 
-/* Radio mặc định, không còn icon tick custom */
 .radio-card input {
     width: 17px;
     height: 17px;
@@ -133,19 +123,18 @@ body {
     background-color: #f4f8f4;
 }
 
-/* Khung nét đứt khi hover hoặc focus */
 .radio-card:hover,
 .radio-card:focus-within {
     border: 1px dashed #999;
 }
 
 /* Ô đang được chọn */
-.radio-card.selected {
+.radio-card:has(input:checked) {
     background-color: #ececec;
     border: 1px solid #333;
 }
 
-.radio-card.selected:hover {
+.radio-card:has(input:checked):hover {
     background-color: #e2e2e2;
     border: 1px solid #333;
 }
@@ -155,14 +144,19 @@ body {
     color: #222;
 }
 
-.radio-card.selected .radio-label {
+/* Chữ đậm khi được chọn */
+.radio-card:has(input:checked) .radio-label {
     font-weight: 700;
 }
 
+.radio-card.selected {
+    background-color: #ececec;
+    border: 1px solid #333;
+}
 
-/* =========================
-   Buttons
-========================= */
+.radio-card.selected .radio-label {
+    font-weight: 700;
+}
 
 .btn-ok,
 .btn-done {
@@ -196,11 +190,6 @@ body {
     margin-top: 50px;
 }
 
-
-/* =========================
-   Textarea - Câu 6
-========================= */
-
 .comment-box {
     width: 100%;
     min-height: 90px;
@@ -217,21 +206,23 @@ body {
     box-shadow: 0 0 0 2px rgba(46, 139, 46, 0.35);
 }
 
-
-/* =========================
-   Banner sau khi submit
-========================= */
-
-.submitted-banner {
-    margin-top: 30px;
-    padding: 14px 18px;
-    background-color: #eaf6ea;
-    border: 1px solid #2e8b2e;
-    border-radius: 4px;
-    color: #235f23;
-    font-size: 15px;
+/* error */
+.error {
+    color: #c62828;
+    font-size: 14px;
+    margin-top: 8px;
 }
 
+/* After submit */
+.success-container {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.success-message {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
 
 /* =========================
    Responsive
@@ -261,3 +252,4 @@ body {
         font-size: 12px;
     }
 }
+
