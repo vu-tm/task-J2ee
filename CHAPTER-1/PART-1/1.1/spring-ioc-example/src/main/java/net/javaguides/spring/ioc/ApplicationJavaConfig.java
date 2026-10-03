@@ -16,6 +16,7 @@ public class ApplicationJavaConfig {
         GreetingService greetingService = (GreetingService) context.getBean("greetingService");
         greetingService.getMessage();
 
+        
         // 3. Đóng Container
         ((AnnotationConfigApplicationContext) context).close();
     }
